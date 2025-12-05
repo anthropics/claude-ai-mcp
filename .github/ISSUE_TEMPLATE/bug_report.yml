@@ -1,0 +1,84 @@
+name: Bug Report
+description: Report an issue with MCP integration in Claude.ai
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an MCP issue!
+
+        Before submitting, please:
+        - Search existing issues to avoid duplicates
+        - Make sure you're reporting a single, specific bug
+        - Confirm this is an MCP-related issue (not general Claude.ai)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the MCP issue you encountered
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: Describe the expected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Connect to MCP server...
+        2. Call tool...
+        3. See error...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which area of MCP integration is affected?
+      options:
+        - MCP Connector (adding/managing servers)
+        - Tool Discovery / Invocation
+        - Resource Handling
+        - Session / Connection Management
+        - OAuth / Authentication
+        - Protocol (SSE, Streamable HTTP)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: server
+    attributes:
+      label: MCP Server (if applicable)
+      description: Which MCP server were you using?
+      placeholder: e.g., filesystem, github, custom server
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error messages or logs
+      description: If applicable, paste any error messages
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other information that might help (screenshots, server config, etc.)
+    validations:
+      required: false

@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MCP Connector Documentation
+    url: https://platform.claude.com/docs/en/agents-and-tools/mcp-connector
+    about: Learn about MCP integration in Claude.ai
+  - name: MCP Specification
+    url: https://github.com/modelcontextprotocol/specification
+    about: Issues with the MCP protocol itself? Go here
+  - name: MCP SDKs
+    url: https://github.com/modelcontextprotocol
+    about: Issues with TypeScript/Python SDKs? Go here
+  - name: General Claude.ai Support
+    url: https://support.anthropic.com
+    about: Non-MCP Claude.ai issues

@@ -1,0 +1,75 @@
+name: Feature Request
+description: Suggest a new MCP feature or improvement for Claude.ai
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an MCP improvement!
+
+        Before submitting, please search existing issues to see if this has already been requested.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What MCP workflow is difficult or impossible today?
+      placeholder: I'm trying to... but currently...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe what you'd like to happen
+      placeholder: It would be great if Claude.ai could...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What workarounds or alternatives have you tried?
+      placeholder: I've tried...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which area of MCP integration does this relate to?
+      options:
+        - MCP Connector (adding/managing servers)
+        - Tool Discovery / Invocation
+        - Resource Handling
+        - Session / Connection Management
+        - OAuth / Authentication
+        - Protocol Support
+        - Developer Experience
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this to your workflow?
+      options:
+        - Critical - Blocking my MCP server development
+        - High - Major improvement needed
+        - Medium - Would be helpful
+        - Low - Nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information, screenshots, or examples
+    validations:
+      required: false
