@@ -2,21 +2,24 @@
 
 This repository is the communication hub for **MCP (Model Context Protocol) integration in Claude.ai**. Use it to stay updated on technical changes and to report bugs or request features.
 
-## Purpose
-
-- **Announcements**: Subscribe to be notified of MCP-related changes and updates
-- **Bug Reports**: Report issues with MCP servers, the MCP Connector, or integrations
-- **Feature Requests**: Suggest improvements to MCP support in Claude.ai
-
 ## How to Stay Updated
 
-Click **Watch** → **All Activity** to receive notifications about:
+**For announcements only** (low noise):
+1. Go to [Discussions](../../discussions)
+2. In the Announcements category, click **Subscribe**
 
+You'll be notified of:
 - Protocol changes (SSE deprecation, Streamable HTTP updates)
 - Session behavior changes
-- New MCP capabilities (`tools/list_changed`, resources, etc.)
+- New MCP capabilities
 - Breaking changes and deprecations
 - Security updates
+
+## Report a Bug or Request a Feature
+
+Use [Issues](../../issues/new/choose) to:
+- Report bugs with MCP servers, the MCP Connector, or integrations
+- Request new features or improvements
 
 ## What This Covers
 
