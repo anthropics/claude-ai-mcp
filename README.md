@@ -18,12 +18,12 @@ You'll be notified of:
 ## Report a Bug or Request a Feature
 
 Use [Issues](../../issues/new/choose) to:
-- Report bugs with MCP servers, the MCP Connector, or integrations
+- Report bugs with MCP servers or integrations
 - Request new features or improvements
 
 ## What This Covers
 
-- **MCP Connector** - The Claude.ai feature for connecting to MCP servers
+- **Integrations** - Connecting MCP servers to Claude.ai
 - **Session Management** - Initialization, reconnection, and lifecycle behavior
 - **Protocol Support** - SSE, Streamable HTTP, transport changes
 - **Tool & Resource Handling** - How Claude.ai discovers and invokes MCP tools
@@ -37,10 +37,9 @@ Use [Issues](../../issues/new/choose) to:
 
 ## Resources
 
-- [MCP Connector Documentation](https://platform.claude.com/docs/en/agents-and-tools/mcp-connector)
 - [MCP Specification](https://spec.modelcontextprotocol.io)
 - [MCP Directory](https://www.claudemcp.com)
 
 ## License
 
-[CC-BY-4.0](LICENSE)
+Use is subject to [Anthropic's Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms).
