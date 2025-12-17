@@ -21,6 +21,21 @@ Use [Issues](../../issues/new/choose) to:
 - Report bugs with MCP servers or integrations
 - Request new features or improvements
 
+## Context Usage
+
+**Important:** Enabled MCP servers consume context window space even when not actively used. Each server's tool definitions are loaded into context at the start of a conversation.
+
+For example, servers with many tools can use significant context:
+- A server with ~40 tools may use ~35,000+ tokens
+- Multiple servers enabled simultaneously can quickly add up
+
+**Recommendations:**
+- Only enable MCP servers you plan to use in a conversation
+- Disable unused servers to preserve context for your actual conversation
+- If you notice conversations hitting context limits quickly, check your enabled MCP servers
+
+A notification will appear in Claude.ai when your enabled MCP servers exceed approximately 20,000 tokens of context usage.
+
 ## What This Covers
 
 - **Integrations** - Connecting MCP servers to Claude.ai
