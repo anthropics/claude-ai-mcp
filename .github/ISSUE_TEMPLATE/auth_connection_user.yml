@@ -1,0 +1,103 @@
+name: "Auth Connection Issue: User Report"
+description: Report an OAuth or authentication issue when connecting to an MCP server on Claude.ai (for users of a server, use this if you are NOT the maintainer/developer)
+labels: ["bug", "auth", "user-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an auth connection issue!
+
+        This template is for users who are experiencing auth issues with an MCP server they did not build.
+        If you develop or maintain the server, please use the "Auth Connection Issue: Server Developer" template instead.
+
+        Before submitting, please:
+        - Replicate the issue again at the time of submission to confirm the problem still occurs
+        - Check if another issue has already been filed for this server
+        - Search for existing general auth issues to avoid noise
+        - Have your error details ready, including any error IDs shown in Claude.ai
+
+  - type: input
+    id: server-url
+    attributes:
+      label: MCP server URL or name
+      description: The endpoint URL or name of the MCP server you're trying to connect to. Please file a separate issue for each server.
+      placeholder: e.g., https://example.com/mcp or "Acme MCP Server"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: connection-method
+    attributes:
+      label: How are you connecting to this server?
+      options:
+        - From a custom connector URL I entered manually
+        - From browsing the MCP server directory
+    validations:
+      required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does the issue occur?
+      description: At which point does the issue happen?
+      options:
+        - When pressing the Connect button
+        - In the authorization screen
+        - When auth finishes and redirects back to Claude.ai
+        - During a conversation (after initial auth)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: timestamp
+    attributes:
+      label: When did you last reproduce this?
+      description: Date, time, and timezone of your most recent reproduction. This helps us look into the issue.
+      placeholder: e.g., 2026-02-01 3:30 PM PST
+    validations:
+      required: true
+
+  - type: input
+    id: browser-os
+    attributes:
+      label: Browser and OS
+      description: Auth redirects can behave differently across browsers
+      placeholder: e.g., Chrome 132 on macOS 15.3
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: A clear description of what happened when you tried to connect
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Error details
+      description: If you saw a pop-up error in Claude.ai, please paste the error message and error ID that was shown.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other information that might help (screenshots, steps you tried, etc.)
+    validations:
+      required: false

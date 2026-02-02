@@ -1,15 +1,17 @@
-name: Auth Connection Issue
-description: Report an OAuth or authentication issue with a specific MCP server on Claude.ai
-labels: ["bug", "auth"]
+name: "Auth Connection Issue: Server Developer"
+description: Report an OAuth or authentication issue with your MCP server on Claude.ai (for server developers/maintainers)
+labels: ["bug", "auth", "server-developer-report"]
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for reporting an auth connection issue!
 
+        This template is for developers who build or maintain the MCP server experiencing the issue.
+        If you're a user of a server you didn't build, please use the "Auth Connection Issue: User Report" template instead.
+
         Before submitting, please:
         - Replicate the issue again at the time of submission to confirm the problem still occurs
-        - If this is not your server, check if another issue has already been filed for this server
         - Search for existing general auth issues to avoid noise
         - Confirm this is related to OAuth or authentication (not a general MCP bug)
         - Have your error details ready, including any error IDs shown in Claude.ai
@@ -18,18 +20,8 @@ body:
     id: server-url
     attributes:
       label: MCP server URL
-      description: The endpoint URL of the MCP server you're connecting to. Please file a separate issue for each server.
+      description: The endpoint URL of your MCP server. Please file a separate issue for each server.
       placeholder: e.g., https://example.com/mcp
-    validations:
-      required: true
-
-  - type: dropdown
-    id: reporter-role
-    attributes:
-      label: Are you the developer of this server or a user?
-      options:
-        - I develop or maintain this server
-        - I'm a user of this server
     validations:
       required: true
 
@@ -53,7 +45,11 @@ body:
       label: Transport used
       description: |
         Which transport does your MCP server use?
-        Note: The SSE transport has been deprecated. We recommend switching to streamable-http.
+
+        Note: The SSE transport was deprecated in the MCP spec (v2025-03-26) and will have more rough edges.
+        We strongly recommend using streamable-http instead if that's an option.
+        The migration consists of collapsing the dual endpoints (GET /sse + POST /messages) into a single
+        endpoint (e.g. /mcp) that accepts both POST and optionally GET for server-initiated messages.
       options:
         - streamable-http
         - sse (deprecated)
@@ -71,6 +67,24 @@ body:
         - Dynamic Client Registration (DCR)
         - Static
         - OpenID Connect Discovery (OIDC)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sse-fallback
+    attributes:
+      label: "SSE only: Does your server return the expected status code for POST requests?"
+      description: |
+        If your server uses the deprecated SSE transport, it needs to return 400, 404, or 405 for the streamable-http endpoint
+        (i.e. you need to make sure that a call to POST /mcp returns one of those codes) so that clients can detect this and fall back to
+        the deprecated SSE transport. This is necessary because clients will first attempt to connect via
+        streamable-http. If your server does not return one of these status codes for that POST request,
+        the client may fail to connect.
+      options:
+        - Not applicable (my server does not use SSE)
+        - "Yes"
+        - "No"
+        - Not sure
     validations:
       required: true
 
