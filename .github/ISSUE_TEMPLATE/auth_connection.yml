@@ -1,0 +1,137 @@
+name: Auth Connection Issue
+description: Report an OAuth or authentication issue with a specific MCP server on Claude.ai
+labels: ["bug", "auth"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an auth connection issue!
+
+        Before submitting, please:
+        - Replicate the issue again at the time of submission to confirm the problem still occurs
+        - If this is not your server, check if another issue has already been filed for this server
+        - Search for existing general auth issues to avoid noise
+        - Confirm this is related to OAuth or authentication (not a general MCP bug)
+        - Have your error details ready, including any error IDs shown in Claude.ai
+
+  - type: input
+    id: server-url
+    attributes:
+      label: MCP server URL
+      description: The endpoint URL of the MCP server you're connecting to. Please file a separate issue for each server.
+      placeholder: e.g., https://example.com/mcp
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reporter-role
+    attributes:
+      label: Are you the developer of this server or a user?
+      options:
+        - I develop or maintain this server
+        - I'm a user of this server
+    validations:
+      required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does the issue occur?
+      description: At which point in the auth flow does the issue happen?
+      options:
+        - When pressing the Connect button
+        - In the authorization screen from my server
+        - When auth finishes and redirects back to Claude.ai
+        - During a conversation (after initial auth)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport used
+      description: |
+        Which transport does your MCP server use?
+        Note: The SSE transport has been deprecated. We recommend switching to streamable-http.
+      options:
+        - streamable-http
+        - sse (deprecated)
+        - stdio
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client-registration
+    attributes:
+      label: Client registration type
+      description: How is your OAuth client registered with the authorization server?
+      options:
+        - My server does not have auth
+        - Dynamic Client Registration (DCR)
+        - Static
+        - OpenID Connect Discovery (OIDC)
+    validations:
+      required: true
+
+  - type: input
+    id: timestamp
+    attributes:
+      label: When did you last reproduce this?
+      description: Date, time, and timezone of your most recent reproduction. This helps us correlate with server-side logs.
+      placeholder: e.g., 2026-02-01 3:30 PM PST
+    validations:
+      required: true
+
+  - type: input
+    id: browser-os
+    attributes:
+      label: Browser and OS
+      description: Auth redirects can behave differently across browsers
+      placeholder: e.g., Chrome 132 on macOS 15.3
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: A clear description of the auth issue you encountered
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Issue details
+      description: Please describe the issue in detail. If you saw a pop-up error in Claude.ai, include the error details and the error ID that was shown.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: server-logs
+    attributes:
+      label: Logs from your server
+      description: If available, paste any relevant logs from your MCP server around the time of the issue. Please include timestamps.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other information that might help (screenshots, server config, OAuth provider, etc.)
+    validations:
+      required: false
