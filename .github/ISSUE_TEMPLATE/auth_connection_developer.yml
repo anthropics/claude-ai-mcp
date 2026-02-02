@@ -1,0 +1,151 @@
+name: "Auth Connection Issue: Server Developer"
+description: Report an OAuth or authentication issue with your MCP server on Claude.ai (for server developers/maintainers)
+labels: ["bug", "auth", "server-developer-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an auth connection issue!
+
+        This template is for developers who build or maintain the MCP server experiencing the issue.
+        If you're a user of a server you didn't build, please use the "Auth Connection Issue: User Report" template instead.
+
+        Before submitting, please:
+        - Replicate the issue again at the time of submission to confirm the problem still occurs
+        - Search for existing general auth issues to avoid noise
+        - Confirm this is related to OAuth or authentication (not a general MCP bug)
+        - Have your error details ready, including any error IDs shown in Claude.ai
+
+  - type: input
+    id: server-url
+    attributes:
+      label: MCP server URL
+      description: The endpoint URL of your MCP server. Please file a separate issue for each server.
+      placeholder: e.g., https://example.com/mcp
+    validations:
+      required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does the issue occur?
+      description: At which point in the auth flow does the issue happen?
+      options:
+        - When pressing the Connect button
+        - In the authorization screen from my server
+        - When auth finishes and redirects back to Claude.ai
+        - During a conversation (after initial auth)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport used
+      description: |
+        Which transport does your MCP server use?
+
+        Note: The SSE transport was deprecated in the MCP spec (v2025-03-26) and will have more rough edges.
+        We strongly recommend using streamable-http instead if that's an option.
+        The migration consists of collapsing the dual endpoints (GET /sse + POST /messages) into a single
+        endpoint (e.g. /mcp) that accepts both POST and optionally GET for server-initiated messages.
+      options:
+        - streamable-http
+        - sse (deprecated)
+        - stdio
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client-registration
+    attributes:
+      label: Client registration type
+      description: How is your OAuth client registered with the authorization server?
+      options:
+        - My server does not have auth
+        - Dynamic Client Registration (DCR)
+        - Static
+        - OpenID Connect Discovery (OIDC)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sse-fallback
+    attributes:
+      label: "SSE only: Does your server return the expected status code for POST requests?"
+      description: |
+        If your server uses the deprecated SSE transport, it needs to return 400, 404, or 405 for the streamable-http endpoint
+        (i.e. you need to make sure that a call to POST /mcp returns one of those codes) so that clients can detect this and fall back to
+        the deprecated SSE transport. This is necessary because clients will first attempt to connect via
+        streamable-http. If your server does not return one of these status codes for that POST request,
+        the client may fail to connect.
+      options:
+        - Not applicable (my server does not use SSE)
+        - "Yes"
+        - "No"
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: timestamp
+    attributes:
+      label: When did you last reproduce this?
+      description: Date, time, and timezone of your most recent reproduction. This helps us correlate with server-side logs.
+      placeholder: e.g., 2026-02-01 3:30 PM PST
+    validations:
+      required: true
+
+  - type: input
+    id: browser-os
+    attributes:
+      label: Browser and OS
+      description: Auth redirects can behave differently across browsers
+      placeholder: e.g., Chrome 132 on macOS 15.3
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: A clear description of the auth issue you encountered
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Issue details
+      description: Please describe the issue in detail. If you saw a pop-up error in Claude.ai, include the error details and the error ID that was shown.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: server-logs
+    attributes:
+      label: Logs from your server
+      description: If available, paste any relevant logs from your MCP server around the time of the issue. Please include timestamps.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other information that might help (screenshots, server config, OAuth provider, etc.)
+    validations:
+      required: false
