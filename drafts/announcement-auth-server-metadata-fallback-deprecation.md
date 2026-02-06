@@ -5,7 +5,7 @@
 
 ## Summary
 
-As part of our adoption of the [2025-11-25 MCP specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization), Claude.ai no longer supports the path-aware `auth_server_metadata` discovery logic for OAuth authentication when using the legacy MCP spec (prior to or using 2025-03-26).
+As part of our adoption of the [2025-11-25 MCP specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization), Claude.ai no longer attempts path-aware authorization server metadata discovery for MCP servers that do not implement Protected Resource Metadata (PRM).
 
 ## Details
 
