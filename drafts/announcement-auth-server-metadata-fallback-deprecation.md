@@ -15,7 +15,13 @@ This path-aware fallback has been removed. Root-based discovery (`/.well-known/o
 
 ### Example
 
-For an MCP server at `https://mcp.example.com/v1/mcp` without PRM implemented, the authorization server metadata discovery will now only use root-based discovery:
+### Example of current behavior
+
+For an MCP server at `https://mcp.example.com/v1/mcp`:
+
+#### Without PRM
+
+Authorization server metadata discovery only uses root-based discovery:
 
 `https://mcp.example.com/.well-known/oauth-authorization-server`
 
@@ -23,11 +29,32 @@ The path-aware fallback is no longer attempted:
 
 ~~`https://mcp.example.com/.well-known/oauth-authorization-server/v1/mcp`~~
 
-If root-based authorization server metadata discovery also fails, the client will fall back to [default endpoint conventions](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization#fallbacks-for-servers-without-metadata-discovery) relative to the server's origin:
+If root-based discovery also fails, the client falls back to
+[default endpoint conventions](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization#fallbacks-for-servers-without-metadata-discovery),
+which are relative to the server's origin:
 
 - **Authorization:** `https://mcp.example.com/authorize`
 - **Token:** `https://mcp.example.com/token`
 - **Registration:** `https://mcp.example.com/register`
+
+#### With PRM returning an auth server with a path (recommended)
+
+If the server implements PRM and returns an `authorization_servers` value
+with a path (e.g., `https://auth.example.com/oauth/tenant42`), path-aware
+discovery works as expected using the PRM-provided URL:
+
+1. `https://auth.example.com/.well-known/oauth-authorization-server/oauth/tenant42`
+2. `https://auth.example.com/.well-known/openid-configuration/oauth/tenant42`
+3. `https://auth.example.com/oauth/tenant42/.well-known/openid-configuration`
+
+#### With PRM returning an auth server at the root
+
+If PRM returns a root-level authorization server
+(e.g., `https://auth.example.com/`):
+
+1. `https://auth.example.com/.well-known/oauth-authorization-server`
+2. `https://auth.example.com/.well-known/openid-configuration`
+
 
 ### Reference
 
