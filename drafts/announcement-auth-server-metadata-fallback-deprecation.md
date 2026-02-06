@@ -62,9 +62,10 @@ The current authorization server metadata discovery logic can be found in the [M
 
 ## Who is affected
 
-MCP servers that:
-- Do not implement Protected Resource Metadata (PRM)
-- Relied on the legacy path-aware `auth_server_metadata` discovery fallback
+MCP servers that relied on path-aware authorization server metadata discovery
+(e.g., `/.well-known/oauth-authorization-server/{path}`) instead of implementing
+Protected Resource Metadata (PRM).
+
 
 ## Action required
 
