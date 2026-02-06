@@ -1,6 +1,6 @@
 name: "Auth Connection Issue: Server Developer"
 description: Report an OAuth or authentication issue with your MCP server on Claude.ai (for server developers/maintainers)
-labels: ["bug", "auth", "server-developer-report"]
+labels: ["bug", "auth", "auth-issue", "server-developer-report"]
 body:
   - type: markdown
     attributes:
