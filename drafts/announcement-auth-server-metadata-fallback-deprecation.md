@@ -1,4 +1,4 @@
-# Deprecation of path-aware `auth_server_metadata` discovery fallback
+# Removal of path-aware `auth_server_metadata` discovery fallback when PRM is unavailable
 
 **Type:** Deprecation
 **Effective Date:** January 8, 2026
