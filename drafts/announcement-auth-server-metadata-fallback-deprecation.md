@@ -9,9 +9,9 @@ As part of our adoption of the [2025-11-25 MCP specification](https://modelconte
 
 ## Details
 
-Previously, when connecting to MCP servers requiring OAuth authentication, Claude.ai would attempt a fallback discovery mechanism if the primary [Protected Resource Metadata (PRM)](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#2-3-1-protected-resource-metadata) discovery failed. This fallback looked for a path-aware authorization server metadata discovery URL.
+Previously, when connecting to MCP servers requiring OAuth authentication, if Protected Resource Metadata (PRM) discovery failed, Claude.ai would attempt path-aware authorization server metadata discovery by appending the MCP server's path to `/.well-known/oauth-authorization-server` (e.g., `/.well-known/oauth-authorization-server/v1/mcp`).
 
-This fallback behavior has been removed to align with the current MCP specification, which requires MCP servers to properly implement Protected Resource Metadata (PRM) for OAuth discovery.
+This path-aware fallback has been removed. Root-based discovery (`/.well-known/oauth-authorization-server`) and default endpoint conventions (`/authorize`, `/token`, `/register`) remain unchanged.
 
 ### Example
 
