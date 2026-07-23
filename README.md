@@ -37,8 +37,8 @@ Use [Issues](../../issues/new/choose) to:
 
 ## Resources
 
-- [MCP Specification](https://spec.modelcontextprotocol.io)
-- [MCP Directory](https://www.claudemcp.com)
+- [MCP Specification](http://web.archive.org/web/20250407235857/https://spec.modelcontextprotocol.io/)
+- [MCP Directory](http://web.archive.org/web/20251102054020/https://www.claudemcp.com/)
 
 ## License
 
