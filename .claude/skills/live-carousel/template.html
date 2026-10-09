@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Newsreader:wght@400;500&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/motion@12/dist/motion.js"></script>
+<style>
+  :root{--bg:#0c0d10;--fg:#f0f0ec;--muted:#a2a4ad;--acc:#a082ff}
+  html,body{margin:0;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--fg)}
+  .slide{position:relative;width:1080px;height:1350px;box-sizing:border-box;padding:90px}
+  .label{font:500 24px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--muted)}
+  .count{position:absolute;top:90px;right:90px;font:500 24px 'JetBrains Mono',monospace;color:var(--muted)}
+  h1{font:800 112px/1.02 'Bricolage Grotesque',sans-serif;margin:220px 0 0;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--acc)}
+  p{font:400 42px/1.35 'Newsreader',serif;color:var(--muted);max-width:820px;margin:40px 0 0}
+  .ball{position:absolute;width:90px;height:90px;border-radius:50%;background:var(--acc);top:1080px}
+</style></head><body>
+<section class="slide"><div class="label">THE GROWTH FRAMEWORK · MIND</div><div class="count">01/03</div>
+  <h1 class="a">You don't lack <em>discipline.</em></h1><p class="b">You lack a system that works on bad days.</p><div class="ball"></div></section>
+<section class="slide"><div class="label">THE GROWTH FRAMEWORK · MIND</div><div class="count">02/03</div>
+  <h1 class="a">Make it <em>2 minutes.</em></h1><p class="b">Start so small you can't say no.</p><div class="ball"></div></section>
+<section class="slide" data-bars="4"><div class="label">THE GROWTH FRAMEWORK · MIND</div><div class="count">03/03</div>
+  <h1 class="a">Save this for <em>Monday.</em></h1><p class="b">@the_growth_frame_work</p><div class="ball"></div></section>
+<script>
+// Contract: window.__frame(i, t) draws slide i at t seconds. Build paused Motion animations once, then set .time.
+const { animate } = Motion;
+const BEAT = 0.5;                                   // 120 BPM: land every move on a multiple of BEAT
+const slides = [...document.querySelectorAll('.slide')];
+const tracks = slides.map(s => [
+  animate(s.querySelector('.a'), { opacity: [0, 1], y: [30, 0] }, { duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }),
+  animate(s.querySelector('.b'), { opacity: [0, 1], y: [20, 0] }, { duration: 0.5, delay: 2 * BEAT, ease: [0.22, 1, 0.36, 1] }),
+]);
+tracks.flat().forEach(c => c.pause());
+// The ball crosses every slide left to right, bouncing on every beat, so swiping feels like one continuous move.
+window.__frame = (i, t) => {
+  tracks[i].forEach(c => (c.time = t));
+  const len = (+(slides[i].dataset.bars || 2)) * 4 * BEAT;
+  const x = 90 + (t / len) * 810;                    // enters left, leaves right, so it looks like one journey
+  const bounce = Math.abs(Math.sin(Math.PI * t / BEAT)) * 120;
+  const ball = slides[i].querySelector('.ball');
+  ball.style.left = `${x}px`;
+  ball.style.transform = `translateY(${-bounce}px)`;
+};
+</script></body></html>

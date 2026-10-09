@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Growth Framework · Mind, Body & Money</title>
+<meta name="description" content="Better life through mind, body and money. Practical notes on discipline, simple training, healthy food and sensible investing, plus PSX Alpha: a method for researching Pakistan Stock Exchange stocks.">
+<meta property="og:title" content="The Growth Framework · Mind, Body & Money">
+<meta property="og:description" content="Practical notes on discipline, simple training, healthy food and sensible investing in Pakistan.">
+<meta property="og:url" content="https://thegrowthframework.live/">
+<meta name="theme-color" content="#0c0d10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0d10'/%3E%3Ccircle cx='22' cy='38' r='9' fill='%23a082ff'/%3E%3Ccircle cx='32' cy='24' r='9' fill='%233ddc84'/%3E%3Ccircle cx='42' cy='38' r='9' fill='%23ffc454'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark editorial site matching the Instagram carousels — one connected line runs through each page like the carousel timeline. */
+:root{
+  --bg:#0c0d10; --bg2:#121419; --surface:#171a21; --line:#262a33;
+  --fg:#f0f0ec; --muted:#a2a4ad; --faint:#6d717c;
+  --mind:#a082ff; --body:#3ddc84; --money:#ffc454; --accent:#a082ff; --ink:#0c0d10;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --text:'Newsreader',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1160px; --gut:clamp(16px,4vw,40px);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme='dark']){
+  --bg:#f6f5fa; --bg2:#efedf6; --surface:#ffffff; --line:#dcd9e6;
+  --fg:#1d1b26; --muted:#5d5a6e; --faint:#8a879a;
+  --mind:#6a4fd6; --body:#1f8f55; --money:#a8680f; --accent:#6a4fd6; --ink:#ffffff; color-scheme:light}}
+:root[data-theme='light']{
+  --bg:#f6f5fa; --bg2:#efedf6; --surface:#ffffff; --line:#dcd9e6;
+  --fg:#1d1b26; --muted:#5d5a6e; --faint:#8a879a;
+  --mind:#6a4fd6; --body:#1f8f55; --money:#a8680f; --accent:#6a4fd6; --ink:#ffffff; color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--text);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.mind{--c:var(--mind)} .body-p{--c:var(--body)} .money{--c:var(--money)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.brand .dots{display:inline-flex}
+.brand .dots i{width:11px;height:11px;border-radius:50%;margin-right:-3px;border:2px solid var(--bg)}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav a{font-family:var(--display);font-weight:500;font-size:15px;text-decoration:none;color:var(--muted);padding:8px 11px;border-radius:999px}
+.nav a:hover,.nav a[aria-current='page']{color:var(--fg);background:var(--surface)}
+.iconbtn{font:500 14px var(--display);background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:8px 12px;cursor:pointer}
+.igbtn{display:inline-flex;align-items:center;gap:8px;font:700 14px var(--display);text-decoration:none;background:var(--fg);color:var(--bg);border-radius:999px;padding:9px 14px;white-space:nowrap}
+.menubtn{display:none}
+@media (max-width:980px){
+  .nav{display:none;position:absolute;left:0;right:0;top:68px;flex-direction:column;align-items:stretch;background:var(--bg2);border-bottom:1px solid var(--line);padding:10px var(--gut) 16px}
+  .nav.open{display:flex}
+  .nav a{font-size:18px;padding:12px 10px}
+  .menubtn{display:inline-block;margin-left:auto}
+  .top .igbtn span{display:none}
+}
+@media (max-width:480px){
+  .top .wrap{gap:8px}
+  .top .brand{font-size:16px;gap:8px}
+  .top .iconbtn,.top .igbtn{padding:7px 10px;font-size:13px}
+}
+
+/* type */
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.05;text-wrap:balance;margin:0}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chip{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:700 13px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--c,var(--accent));border:2px solid var(--c,var(--accent));border-radius:999px;padding:4px 12px}
+.chip i,.dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--accent));display:inline-block}
+.meta{font:400 13px var(--mono);color:var(--faint)}
+.acc{color:var(--c,var(--accent))}
+
+/* hero */
+.hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,96px);font-weight:800}
+.hero h1 .m{color:var(--mind)} .hero h1 .b{color:var(--body)} .hero h1 .y{color:var(--money)}
+.hero p.lead{font-size:clamp(19px,2vw,22px);color:var(--muted);max-width:34em;margin:22px 0 30px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 16px var(--display);text-decoration:none;border-radius:999px;padding:13px 20px;border:2px solid var(--fg)}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn.ghost{color:var(--fg)}
+.btn:hover{transform:translateY(-1px)}
+.hero-art{position:relative;aspect-ratio:4/5;max-width:420px;width:100%;justify-self:end}
+.hero-art img{position:absolute;width:72%;height:auto;border-radius:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border:1px solid var(--line)}
+.hero-art img:nth-child(1){left:0;top:8%;transform:rotate(-5deg)}
+.hero-art img:nth-child(2){right:0;top:0;transform:rotate(4deg)}
+.giant{position:absolute;right:-1%;bottom:-4%;font:800 clamp(90px,15vw,210px)/1 var(--display);color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--mind) 30%,var(--bg));pointer-events:none;letter-spacing:-.04em;z-index:-1}
+@media (max-width:820px){.giant{display:none}.hero-grid{grid-template-columns:1fr}.hero-art{justify-self:center;max-width:320px}}
+
+/* timeline line (the carousel line) */
+.line{position:relative;height:2px;background:linear-gradient(90deg,var(--mind),var(--body),var(--money));margin-block:8px;border-radius:2px}
+.line::after{content:'';position:absolute;right:-2px;top:-6px;border-left:12px solid var(--money);border-top:7px solid transparent;border-bottom:7px solid transparent}
+
+section.block{padding-block:clamp(48px,7vw,88px)}
+.sechead{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sechead h2{font-size:clamp(30px,4vw,48px);font-weight:800}
+.sechead a{font:500 15px var(--display);color:var(--muted)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.pillars{grid-template-columns:1fr}}
+.pillar{position:relative;display:flex;flex-direction:column;gap:14px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;min-height:300px;overflow:hidden}
+.pillar::before{content:'';position:absolute;inset:auto -30% -55% auto;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 30%,transparent),transparent 70%)}
+.pillar h3{font-size:34px;font-weight:800;color:var(--c)}
+.pillar p{margin:0;color:var(--muted);font-size:18px}
+.pillar ul{list-style:none;margin:auto 0 0;padding:0;font:500 15px var(--display);display:grid;gap:6px}
+.pillar li::before{content:'→ ';color:var(--c)}
+.pillar .count{font:400 13px var(--mono);color:var(--faint)}
+.pillar:hover{border-color:var(--c)}
+
+/* post cards */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;gap:12px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;border-top:4px solid var(--c)}
+.card h3{font-size:23px;font-weight:700;line-height:1.15}
+.card p{margin:0;color:var(--muted);font-size:17px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .meta{margin-top:auto}
+.card:hover h3{color:var(--c)}
+.feature{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;text-decoration:none;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--surface)),var(--surface));border:1px solid var(--line);border-radius:20px;padding:clamp(24px,4vw,40px);margin-bottom:16px}
+.feature h3{font-size:clamp(28px,3.6vw,44px);font-weight:800}
+.feature p{margin:0;color:var(--muted);font-size:19px;max-width:42em}
+
+/* filter pills */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{font:500 15px var(--display);background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filters button[aria-pressed='true']{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* bands */
+.band{background:var(--bg2);border-block:1px solid var(--line)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.split h2{font-size:clamp(32px,4.4vw,54px);font-weight:800}
+.split p{color:var(--muted)}
+.numbers{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
+.numbers li{counter-increment:n;display:flex;gap:14px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font:500 18px var(--display)}
+.numbers li::before{content:counter(n);font:800 15px var(--display);color:var(--ink);background:var(--money);width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center}
+.numbers small{display:block;font:400 15px var(--text);color:var(--muted);margin-top:2px}
+
+/* instagram strip */
+.ig{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.ig{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ig a{display:block;text-decoration:none;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.ig img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto}
+.ig span{display:block;padding:10px 12px;font:500 14px var(--display);color:var(--muted)}
+
+/* guides */
+.guides{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.guides{grid-template-columns:1fr}}
+.guide{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+.guide .doc{width:56px;height:70px;border-radius:6px;background:linear-gradient(160deg,var(--c),color-mix(in srgb,var(--c) 40%,var(--bg)));position:relative}
+.guide .doc::after{content:'PDF';position:absolute;bottom:6px;left:6px;font:700 11px var(--mono);color:var(--ink)}
+.guide h3{font-size:26px;font-weight:800}
+.guide p{margin:0;color:var(--muted);font-size:17px}
+.status{align-self:flex-start;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.status.free{color:var(--ink);background:var(--body);border-color:var(--body)}
+.how{background:var(--surface);border:1px dashed var(--line);border-radius:18px;padding:24px;margin-top:24px}
+.how ol{margin:10px 0 0;padding-left:22px}
+
+/* about */
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.facts b{font:500 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding-top:4px}
+@media (max-width:560px){.facts li{grid-template-columns:1fr;gap:4px}}
+.pagehead{padding-block:clamp(40px,7vw,80px) 8px}
+.pagehead h1{font-size:clamp(40px,6.4vw,80px);font-weight:800}
+.pagehead p{color:var(--muted);font-size:clamp(19px,2vw,22px);max-width:36em;margin:18px 0 0}
+
+/* article */
+.article{max-width:720px;margin:0 auto;padding-block:clamp(32px,6vw,64px)}
+.article .back{font:500 15px var(--display);color:var(--muted);text-decoration:none}
+.article h1{font-size:clamp(36px,5.4vw,58px);font-weight:800;margin:18px 0 16px}
+.article .lede{font-size:22px;color:var(--muted);margin:0 0 14px}
+.article .content h2{font-size:28px;font-weight:700;margin:42px 0 10px;color:var(--fg)}
+.article .content h2::before{content:'';display:block;width:36px;height:4px;border-radius:2px;background:var(--c);margin-bottom:14px}
+.article .content p,.article .content li{font-size:20px}
+.article .content table{border-collapse:collapse;width:100%;font:400 16px var(--display)}
+.article .content td,.article .content th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+.tablewrap{overflow-x:auto}
+.article .content .callout{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:16px 18px;margin:28px 0;font-size:19px}
+.disclaimer{font:400 14px var(--mono);color:var(--faint);border-top:1px solid var(--line);margin-top:44px;padding-top:16px}
+.nextprev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+@media (max-width:560px){.nextprev{grid-template-columns:1fr}}
+.nextprev a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.nextprev span{display:block;font:400 12px var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.nextprev strong{font:700 18px var(--display)}
+
+
+/* CSS recreations of Instagram slides (no image files) */
+.slide{position:relative;aspect-ratio:4/5;width:100%;border-radius:14px;overflow:hidden;background:radial-gradient(120% 80% at 90% 10%,color-mix(in srgb,var(--c) 26%,#0c0d10),#0c0d10 60%);color:#f0f0ec;padding:8% 8% 0;display:flex;flex-direction:column;font-family:var(--display);border:1px solid var(--line)}
+.slide .sc{display:flex;justify-content:space-between;align-items:center;font:700 clamp(9px,1vw,12px) var(--display);letter-spacing:.06em}
+.slide .sc b{color:var(--c);border:2px solid var(--c);border-radius:999px;padding:2px 8px}
+.slide .st{font-weight:800;font-size:clamp(20px,2.4vw,30px);line-height:1.05;margin-top:12%;letter-spacing:-.01em}
+.slide .st em{font-style:normal;color:var(--c)}
+.slide .big{font-weight:800;font-size:clamp(44px,6vw,80px);line-height:1;color:var(--c);margin-top:10%}
+.slide .sub{font:500 clamp(12px,1.3vw,15px)/1.35 var(--display);color:#c9cad0;margin-top:6px}
+.slide .sl{margin-top:auto;border-top:2px solid var(--c);padding:6% 0 7%;font:700 clamp(9px,.9vw,11px) var(--display)}
+.slide .play{position:absolute;right:8%;bottom:16%;width:44px;height:44px;border-radius:50%;background:var(--c);display:grid;place-items:center}
+.slide .play::after{content:'';border-left:14px solid #0c0d10;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.hero-art .slide{position:absolute;width:72%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.hero-art .slide:nth-child(1){left:0;top:8%;transform:rotate(-5deg)}
+.hero-art .slide:nth-child(2){right:0;top:0;transform:rotate(4deg)}
+.hero-art .slide .st{font-size:clamp(22px,2.6vw,34px)}
+.ig .slide{border:0;border-radius:0}
+
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:28px}
+.share b{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.share a{font:700 14px var(--display);text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 14px}
+.share a:hover{border-color:var(--c,var(--accent))}
+
+.embeds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+@media (max-width:1100px){.embeds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:720px){.embeds{grid-template-columns:1fr}}
+.embeds .instagram-media{min-width:0!important;width:100%!important;max-width:100%!important;margin:0!important;border-radius:14px!important;background:var(--surface)!important;border:1px solid var(--line)!important}
+.embeds .instagram-media a{display:block;text-decoration:none;font:500 15px var(--display);color:var(--muted)}
+.embeds .slide{border:0;border-radius:0}
+.socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}
+.social{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.social i{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:grid;place-items:center;font:800 16px var(--display);font-style:normal;color:#fff}
+.social b{display:block;font:700 17px var(--display)}
+.social span{display:block;font:400 13px var(--mono);color:var(--faint)}
+.social:hover{border-color:var(--fg)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:40px 56px;margin-top:40px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr}}
+footer p{color:var(--muted);font-size:16px;margin:10px 0 0;max-width:30em}
+footer h4{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font:500 16px var(--display)}
+footer ul a{text-decoration:none;color:var(--muted)} footer ul a:hover{color:var(--fg)}
+.fine{font:400 13px var(--mono);color:var(--faint);margin-top:28px;max-width:none}
+.empty{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="The Growth Framework home"><span class="dots" aria-hidden="true"><i style="background:var(--mind)"></i><i style="background:var(--body)"></i><i style="background:var(--money)"></i></span>The Growth Framework</a>
+    <button class="iconbtn menubtn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#mind">Mind</a><a href="#body">Body</a><a href="#money">Money</a><a href="#psx">PSX Alpha</a><a href="#guides">Free guides</a><a href="#about">About</a>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+    </nav>
+    <a class="igbtn" href="https://www.instagram.com/breaking_patrens_growth/" target="_blank" rel="noopener">IG <span>Follow</span></a>
+  </div>
+</header>
+<main id="app"></main>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="#home"><span class="dots" aria-hidden="true"><i style="background:var(--mind)"></i><i style="background:var(--body)"></i><i style="background:var(--money)"></i></span>The Growth Framework</a>
+        <p>Better life through mind, body and money. Simple, sourced notes for ambitious people in Pakistan and South Asia.</p>
+      </div>
+      <div><h4>Read</h4><ul><li><a href="#mind">Mind</a></li><li><a href="#body">Body</a></li><li><a href="#money">Money</a></li><li><a href="#psx">PSX Alpha</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="https://www.instagram.com/breaking_patrens_growth/" target="_blank" rel="noopener">Instagram @TheGrowthFramework</a></li><li><a href="https://www.linkedin.com/in/muhammad-waseem-raja-848a25323/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="#guides">Free guides</a></li><li><a href="#about">About Waseem</a></li></ul></div>
+    </div>
+    <div id="shareSite"></div>
+    <p class="fine">Educational content only. Not medical or financial advice. Talk to a doctor or a licensed adviser before acting. © <span id="yr"></span> The Growth Framework · thegrowthframework.live</p>
+  </div>
+</footer>
+<script>
+var POSTS = [
+ {slug:`longevity-basics`,pillar:`Body`,date:`2026-10-01`,read:5,
+  title:`Longevity basics: the habits that matter most`,
+  lede:`Living longer and staying capable is built from a short list of ordinary habits, repeated for decades. Here is the list, without the hype.`,
+  body:`<h2>Move every week</h2><p>The World Health Organization recommends adults aim for at least 150 to 300 minutes of moderate activity per week, such as brisk walking, plus muscle-strengthening work on two or more days. Strength matters for staying independent as you age.</p><h2>Protect your sleep</h2><p>A steady wake-up time, daylight in the morning and a calm last hour of the evening are simple supports. Many adults do best with around seven to nine hours.</p><h2>Eat mostly simple food</h2><p>Build meals around vegetables, fruit, pulses, whole grains and enough protein. Go lighter on sugary drinks and heavily processed snacks.</p><h2>Avoid the big known harms</h2><p>Not smoking is among the most effective choices for long-term health. Keep alcohol low or avoid it.</p><h2>Stay connected and keep a purpose</h2><p>Regular time with family and friends, and work or projects that matter to you, are part of a healthy long life.</p><div class='callout'><b>Get the checks done.</b> Blood pressure, blood sugar and other screenings are part of the picture. Ask a doctor which ones suit your age and history.</div><p>Nobody can promise a number of years from any habit. These are the basics that health bodies broadly agree on, and they work best when started early and kept simple.</p>`},
+ {slug:`longevity-and-money`,pillar:`Money`,date:`2026-10-01`,read:4,
+  title:`If you may live to 90, your money has to last`,
+  lede:`A longer life is good news that comes with a bill. Planning for it starts with time, not with a large amount.`,
+  body:`<h2>Time does the heavy lifting</h2><p>Compounding means returns earn their own returns. If you invest 10,000 PKR a month at an assumed 10% yearly return, you would have roughly 2.0 million PKR after 10 years and about 7.6 million after 20. The assumed return is only an illustration, and real returns vary and can be negative.</p><h2>Plan for a long retirement</h2><ul><li>Assume you may need income for 25 to 30 years after you stop working.</li><li>Allow for inflation, which reduces what each rupee buys over time.</li><li>Keep an emergency fund so one shock does not force you to sell investments at a bad moment.</li></ul><h2>Your health is part of the plan</h2><p>Medical costs often rise with age. Staying active and keeping up your health checks is also a financial decision.</p><div class='callout'><b>One step this week.</b> Set an automatic monthly transfer, even a small one, on the day you get paid.</div><p class='disclaimer'>Illustrative arithmetic only. Not financial advice. Returns are not guaranteed and capital can be lost.</p>`},
+ {slug:`what-is-psx-alpha`,pillar:`Money`,date:`2026-10-01`,read:4,
+  title:`What PSX Alpha is, and how this blog covers the market`,
+  lede:`PSX Alpha is a method for researching Pakistan Stock Exchange companies: read the facts, write down your reasoning, and size every position before you enter.`,
+  body:`<h2>The idea</h2><p>The Pakistan Stock Exchange (PSX) has hundreds of listed companies, daily news and a lot of loud opinion. PSX Alpha is a way to cut through that. It is a set of habits for a retail investor, not a tip service and not a prediction engine.</p><h2>The three parts</h2><ol><li><b>Read the facts.</b> Company announcements, financial results, policy rate decisions and the daily index move. These are the inputs worth your time.</li><li><b>Write the reasoning.</b> For every stock you consider, write one paragraph: what the business earns, what could go wrong, and what would make you change your mind.</li><li><b>Size before you enter.</b> Decide how much you can lose on the position before you decide to buy it.</li></ol><div class='callout'><b>What you will find here.</b> Posts on reading a daily market brief, the basic numbers behind a company, the difference between an index and your own portfolio, and risk management. Posts are educational and describe methods, not recommendations.</div><h2>Who it is for</h2><p>Long-horizon investors and traders in Pakistan who want a repeatable process. If you are new, start with the posts tagged Money and read them in order.</p><p class='disclaimer'>This is a research method, not a recommendation to buy or sell any security. Markets carry risk, including the loss of capital.</p>`},
+ {slug:`five-numbers-before-a-psx-stock`,pillar:`Money`,date:`2026-09-30`,read:6,
+  title:`Five numbers to check before you read about any PSX stock`,
+  lede:`Before you read an opinion on a company, look at five figures from its own financial statements. They tell you what kind of business it is.`,
+  body:`<h2>1. Earnings per share (EPS) and its trend</h2><p>EPS is profit after tax divided by the number of shares. One year says little. Look at the last five years and ask whether it is rising, falling or jumping around.</p><h2>2. Price-to-earnings (P/E)</h2><p>P/E is the share price divided by EPS. A share priced at 100 with EPS of 10 has a P/E of 10. Compare it with the company’s own history and with similar companies in the same sector, not with the whole market.</p><h2>3. Dividend yield and payout</h2><p>Dividend yield is the yearly dividend per share divided by the share price. Also check the payout: the share of profit paid out. A high yield paid from falling profit may not last.</p><h2>4. Debt against equity</h2><p>Debt-to-equity compares what the company owes with what its owners have put in. High debt makes profit more fragile when interest rates are high. Read the interest expense line in the results.</p><h2>5. Cash from operations</h2><p>Profit is an accounting figure. Cash from operations shows whether the business actually brings in cash. Profit that never turns into cash deserves a question.</p><div class='callout'><b>Quick routine.</b> Open the latest annual report, write the five numbers on one line each, then write one sentence on what they say together.</div><p class='disclaimer'>These are definitions and a reading method. They are not a recommendation to buy or sell any security.</p>`},
+ {slug:`index-is-not-your-portfolio`,pillar:`Money`,date:`2026-09-29`,read:5,
+  title:`The KSE-100 is not your portfolio`,
+  lede:`The index is a weighted list of large companies. Your results depend on what you hold, when you bought and how much you put into each position.`,
+  body:`<h2>What the index measures</h2><p>The KSE-100 tracks 100 companies on the PSX, weighted by the market value of their free-floating shares. Larger companies move it more. If a few heavy names rise, the index can rise while many other stocks do not.</p><h2>Why your numbers differ</h2><ul><li><b>Different holdings.</b> You own a handful of stocks, not the full list.</li><li><b>Different weights.</b> Your position sizes are your own.</li><li><b>Different timing.</b> Your purchase dates set your return, not the index’s start date.</li><li><b>Dividends and costs.</b> Brokerage, taxes and dividends change what you actually keep.</li></ul><h2>Measure in real terms</h2><p>Inflation reduces what a rupee buys. A rough check is nominal return minus inflation. If your portfolio rose 15% in a year and inflation was 10%, your real gain is roughly 5%.</p><div class='callout'><b>Do this once a quarter.</b> Record your portfolio value, the index level and the inflation rate on the same date. Compare changes, not levels.</div><p class='disclaimer'>Educational content only. Not financial advice. Past results do not predict future results.</p>`},
+ {slug:`why-one-framework`,pillar:`Mind`,date:`2026-09-29`,read:4,
+  title:`Why mind, body and money belong in one framework`,
+  lede:`Each of the three supports the others. A tired body weakens your decisions, a stressed mind weakens your training, and money pressure weakens both.`,
+  body:`<h2>The three pillars</h2><ul><li><b>Mind:</b> attention, discipline and how you make decisions.</li><li><b>Body:</b> movement, food and sleep.</li><li><b>Money:</b> earning, saving and investing with a plan.</li></ul><h2>How they connect</h2><p>When you sleep badly, small decisions get harder. When you are anxious about money, it is harder to keep a training routine. When you have a routine, you have more energy for the work that earns. None of this is a promise. It is an observation worth testing on yourself.</p><h2>The common thread: rules over moods</h2><p>All three pillars improve with the same method. Decide in advance, write it down, keep it small and review it on a schedule. That is what this blog calls a framework.</p><div class='callout'><b>Start with one line per pillar.</b> One habit for the mind, one for the body, one for money. Keep each so small that you cannot fail it.</div>`},
+ {slug:`sunday-review`,pillar:`Mind`,date:`2026-09-28`,read:4,
+  title:`The fifteen-minute Sunday review`,
+  lede:`A short weekly review keeps all three pillars in view. It takes fifteen minutes and needs only a notebook.`,
+  body:`<h2>The steps</h2><ol><li><b>Mind (5 min).</b> What did I plan this week, and what did I finish? Where did I lose focus?</li><li><b>Body (5 min).</b> How many sessions did I do? How were my sleep times and meals? Pick one thing to adjust.</li><li><b>Money (5 min).</b> What did I spend, save or invest? Did I follow my own rules on any trade or purchase? Note any decision I want to review.</li></ol><h2>Then set next week</h2><p>Write one action for each pillar, with a day and a time. Keep each action small enough to do on a bad day.</p><div class='callout'><b>Keep a running log.</b> After a month, read your own notes. The patterns show up in your handwriting, not in anyone’s advice.</div>`},
+ {slug:`steady-sleep-and-wake-time`,pillar:`Body`,date:`2026-09-27`,read:4,
+  title:`A steady wake-up time is the cheapest habit to build`,
+  lede:`Training and food get most of the attention. A regular wake time costs nothing and gives the rest of your routine a fixed starting point.`,
+  body:`<h2>Fix the wake time first</h2><p>Choose a wake-up time you can keep on most days, including weekends. A consistent start makes it easier to place everything else: exercise, meals and work.</p><h2>Simple supports</h2><ul><li>Get daylight soon after waking, even for a few minutes.</li><li>Keep screens out of the last part of the evening where you can.</li><li>Leave a gap between a heavy meal or caffeine and bedtime.</li><li>Keep the room dark and as cool as is comfortable.</li></ul><div class='callout'><b>Try this for two weeks.</b> Set one alarm, get up when it goes off, and note how you feel by day ten.</div><p>If you struggle with sleep for a long time, or feel very tired in the day, speak to a doctor. These are general habits, not treatment for any condition.</p>`},
+ {slug:`one-page-trade-plan`,pillar:`Money`,date:`2026-09-26`,read:5,
+  title:`The one-page trade plan: write it before you click buy`,
+  lede:`A trade plan fits on one page and answers six questions. If you cannot answer them, you are not ready to enter.`,
+  body:`<h2>The six lines</h2><ol><li><b>Idea.</b> One sentence on why this stock or coin, in plain words.</li><li><b>Entry.</b> The price or condition at which you act.</li><li><b>Stop.</b> The price at which the idea is proven wrong, and you exit.</li><li><b>Size.</b> The amount you will lose if the stop is hit, set as a small share of your account.</li><li><b>Target or review date.</b> Where you will take profit, or the date you will review the position.</li><li><b>What would change my mind.</b> A fact, not a feeling.</li></ol><div class='callout'><b>Why one page.</b> A short plan is easier to follow when the price is moving. If the plan is long, you will stop reading it.</div><h2>After the trade</h2><p>Add two lines: what happened, and whether you followed the plan. Judge yourself on the second line first. A loss that followed the plan is a normal cost of trading. A win that broke the plan is a habit to fix.</p><p class='disclaimer'>A method, not a recommendation to buy or sell any security or asset. Trading carries risk of loss.</p>`},
+ {slug:`walk-every-day`,pillar:`Body`,date:`2026-09-25`,read:4,
+  title:`Walking: the training habit with the lowest barrier`,
+  lede:`You need no gym, no kit and no plan to start. A daily walk is the easiest habit to keep, and it counts toward weekly activity guidelines.`,
+  body:`<h2>Why start here</h2><p>Brisk walking is a moderate activity. The World Health Organization suggests adults aim for 150 to 300 minutes of moderate activity a week. That is about 20 to 40 minutes a day.</p><h2>How to make it stick</h2><ul><li>Fix the time. After a meal or after morning prayer works well for many people.</li><li>Walk at a pace where you can talk but not sing.</li><li>Start with ten minutes and add five minutes each week.</li><li>Keep your phone in your pocket for part of the walk.</li></ul><div class='callout'><b>Make it count in your day.</b> Walk to a nearby errand, take calls on foot, or get off one stop early.</div><p>If you have a heart condition, joint pain or have been inactive for a long time, ask a doctor before increasing your activity.</p>`},
+ {slug:`one-focused-block`,pillar:`Mind`,date:`2026-09-24`,read:4,
+  title:`One focused 50-minute block a day`,
+  lede:`Most of the work that moves your life forward needs uninterrupted attention. Protect one block each day for it.`,
+  body:`<h2>The rules</h2><ol><li><b>Pick one task</b> the night before. One, not three.</li><li><b>Set a timer</b> for 50 minutes.</li><li><b>Remove the phone</b> from the room, or switch it off.</li><li><b>Stop when the timer ends,</b> even if you are in flow. Take a short break.</li></ol><h2>What to use it for</h2><p>Study, writing, a financial review, or learning a skill. Choose work that you would otherwise keep putting off.</p><div class='callout'><b>Judge the week, not the day.</b> Aim for five blocks across seven days. Skipping one day does not end the streak.</div>`},
+ {slug:`crypto-and-psx-risk`,pillar:`Money`,date:`2026-09-23`,read:5,
+  title:`Crypto and PSX need different risk rules`,
+  lede:`Both are risky markets, but they behave differently. Your sizing and your hours should reflect that.`,
+  body:`<h2>Differences that matter</h2><ul><li><b>Trading hours.</b> The PSX trades on weekdays in fixed sessions. Crypto trades all day, every day, so news can move prices while you sleep.</li><li><b>Volatility.</b> Crypto prices often move more in a day than a typical large PSX stock. Check recent daily ranges before choosing a size.</li><li><b>Rules and protections.</b> Listed Pakistani companies sit inside a regulated market. Crypto exchanges and coins vary widely in rules and risk.</li></ul><h2>What to change in practice</h2><ol><li>Use a smaller position size for the more volatile asset.</li><li>Place your stop and size before the trade, since you may not be watching.</li><li>Keep the total share of your savings in crypto at a level you could lose without harm.</li></ol><div class='callout'><b>One question.</b> If this position fell by half tonight, would my life change? If yes, the size is too big.</div><p class='disclaimer'>Educational content only. Not financial advice. You can lose some or all of your money in either market.</p>`},
+ {slug:`strength-twice-a-week`,pillar:`Body`,date:`2026-09-22`,read:4,
+  title:`Strength twice a week: a simple plan`,
+  lede:`Muscle-strengthening on two or more days a week is part of standard adult activity guidelines. Five basic movements cover it.`,
+  body:`<h2>The five movements</h2><ol><li><b>Squat or sit-to-stand</b> from a chair.</li><li><b>Push-up,</b> on the floor or against a wall.</li><li><b>Row,</b> with a backpack or a resistance band.</li><li><b>Hip hinge,</b> such as a good morning or a deadlift with a light weight.</li><li><b>Plank,</b> held with a straight line from head to heels.</li></ol><h2>How much</h2><p>Do two or three sets of 8 to 12 slow repetitions of each, on two non-consecutive days. When the last set feels easy, add a repetition or a little weight.</p><div class='callout'><b>Form before load.</b> Move slowly and stop a set when your form breaks down.</div><p>Stop if you feel sharp pain. If you have an injury or a health condition, check with a doctor or physiotherapist first.</p>`},
+ {slug:`decision-journal`,pillar:`Mind`,date:`2026-09-21`,read:3,
+  title:`A decision journal in three lines`,
+  lede:`You cannot judge a decision by its result alone. Write down why you made it, then check later.`,
+  body:`<h2>The three lines</h2><ol><li><b>Decision and date.</b> What did I choose?</li><li><b>Reason and state.</b> Why, and how was I feeling: calm, rushed, excited?</li><li><b>Review date.</b> When will I look again?</li></ol><h2>Why it works</h2><p>Memory edits itself. Without notes, you remember the decisions that worked and forget the reasoning behind the ones that did not. A written record lets you see patterns, such as rushed decisions turning out worse.</p><div class='callout'><b>Use it for money decisions first.</b> Every trade, large purchase or investment gets three lines before you act.</div>`}
+];
+var COLORS={Mind:'mind',Body:'body-p',Money:'money'};
+var PSX=['what-is-psx-alpha','five-numbers-before-a-psx-stock','index-is-not-your-portfolio','crypto-and-psx-risk','one-page-trade-plan'];
+var IG='https://www.instagram.com/breaking_patrens_growth/';
+var PILLARS={
+  Mind:{key:'mind',line:'Discipline, focus and habits that hold up on low days.',topics:['Discipline beats motivation','Focus blocks and deep work','Decision journals and weekly reviews']},
+  Body:{key:'body',line:'Simple training, sleep and food you can keep for life.',topics:['Home exercise and yoga','Walking and strength','Food values and longevity']},
+  Money:{key:'money',line:'Rules before moods: risk, investing and PSX research.',topics:['Risk management','PSX Alpha research','Long-term planning']}
+};
+var SOCIAL=[
+  {n:'Instagram',h:'@TheGrowthFramework',u:'https://www.instagram.com/breaking_patrens_growth/',k:'IG',bg:'linear-gradient(135deg,#f58529,#dd2a7b,#8134af)'},
+  {n:'LinkedIn',h:'Muhammad Waseem Raja',u:'https://www.linkedin.com/in/muhammad-waseem-raja-848a25323/',k:'in',bg:'#0a66c2'}
+];
+function socials(){return "<div class='socials'>"+SOCIAL.map(function(s){return "<a class='social' href='"+s.u+"' target='_blank' rel='noopener'><i style='background:"+s.bg+"'>"+s.k+"</i><div><b>"+s.n+"</b><span>"+s.h+"</span></div></a>"}).join('')+"</div>"}
+function igEmbeds(){
+  var E=[
+   ['https://www.instagram.com/p/Dd9UwNLDPtd/',slide('mind','MIND','1/7',"Discipline beats <em>motivation</em>")],
+   ['https://www.instagram.com/reel/Dd9U27ejXVO/',slide('mind','REEL','0:10',"Motivation fades. <em>Habits stay.</em>","<span class='play'></span>")],
+   ['https://www.instagram.com/p/Dd6txghlwSY/',slide('body-p','BODY','1/7',"Push-ups, <em>done right</em>","<div class='sub' style='margin-top:10px'>No gym needed. Knee option for beginners.</div>")]
+  ];
+  return "<div class='embeds'>"+E.map(function(x){return "<blockquote class='instagram-media' data-instgrm-permalink='"+x[0]+"?utm_source=ig_embed' data-instgrm-version='14'><a href='"+x[0]+"' target='_blank' rel='noopener' style='padding:0'>"+x[1]+"<span style='display:block;padding:12px 14px'>View on Instagram →</span></a></blockquote>"}).join('')+"</div>"}
+function loadIG(){if(window.instgrm&&window.instgrm.Embeds){window.instgrm.Embeds.process();return}
+  if(document.getElementById('igjs'))return;var s=document.createElement('script');s.id='igjs';s.async=true;s.src='https://www.instagram.com/embed.js';document.body.appendChild(s)}
+var SITE='https://thegrowthframework.live/';
+function shareBar(url,text,label){var u=encodeURIComponent(url),x=encodeURIComponent(text);
+  return "<div class='share'><b>"+(label||'Share')+"</b>"+
+  "<a href='https://www.facebook.com/sharer/sharer.php?u="+u+"' target='_blank' rel='noopener'>Facebook</a>"+
+  "<a href='https://www.linkedin.com/sharing/share-offsite/?url="+u+"' target='_blank' rel='noopener'>LinkedIn</a>"+
+  "<a href='https://pinterest.com/pin/create/button/?url="+u+"&description="+x+"' target='_blank' rel='noopener'>Pinterest</a>"+
+  "<a href='https://wa.me/?text="+x+"%20"+u+"' target='_blank' rel='noopener'>WhatsApp</a></div>"}
+var app=document.getElementById('app');
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmt(d){var p=d.split('-');return (p[2]*1)+' '+MONTHS[p[1]-1]+' '+p[0]}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function chip(p){return "<span class='chip'><i></i>"+p+"</span>"}
+function card(p){return "<a class='card "+COLORS[p.pillar]+"' href='#"+p.slug+"'>"+chip(p.pillar)+"<h3>"+esc(p.title)+"</h3><p>"+esc(p.lede)+"</p><span class='meta'>"+fmt(p.date)+" · "+p.read+" min read</span></a>"}
+function feature(p){return "<a class='feature "+COLORS[p.pillar]+"' href='#"+p.slug+"'>"+chip(p.pillar)+"<h3>"+esc(p.title)+"</h3><p>"+esc(p.lede)+"</p><span class='meta'>"+fmt(p.date)+" · "+p.read+" min read</span></a>"}
+function count(name){return POSTS.filter(function(p){return p.pillar===name}).length}
+
+function slide(cls,label,cnt,title,extra){return "<div class='slide "+cls+"'><div class='sc'><b>"+label+"</b><span>"+cnt+"</span></div>"+(title?"<div class='st'>"+title+"</div>":"")+(extra||"")+"<div class='sl'>@TheGrowthFramework</div></div>"}
+function igStrip(){
+  var t=[
+   ['https://www.instagram.com/p/Dd9UwNLDPtd/',slide('mind','MIND','1/7',"Discipline beats <em>motivation</em>"),'Carousel · Discipline beats motivation'],
+   ['https://www.instagram.com/reel/Dd9U27ejXVO/',slide('mind','REEL','0:10',"Motivation fades. <em>Habits stay.</em>","<span class='play'></span>"),'Reel · 10 seconds on discipline'],
+   ['https://www.instagram.com/p/Dd9UwNLDPtd/',slide('mind','MIND','4/7','',"<div class='big'>66</div><div class='sub'>days, on average, for a new habit to become automatic.<br>Range: 18–254 days.</div>"),'Why habits take 66 days'],
+   ['https://www.instagram.com/p/Dd6txghlwSY/',slide('body-p','BODY','1/7',"Push-ups, <em>done right</em>","<div class='sub' style='margin-top:10px'>No gym needed. Knee option for beginners.</div>"),'Carousel · Push-ups done right']
+  ];
+  return "<div class='ig'>"+t.map(function(x){return "<a href='"+x[0]+"' target='_blank' rel='noopener'>"+x[1]+"<span>"+x[2]+"</span></a>"}).join('')+"</div>";
+}
+
+function home(){
+  var latest=POSTS.slice(0,7);
+  var h="<section class='hero'><div class='wrap hero-grid'><div>"+
+    "<span class='eyebrow'>@TheGrowthFramework · Pakistan</span>"+
+    "<h1 style='margin-top:16px'>Better life through <span class='m'>mind</span>, <span class='b'>body</span> &amp; <span class='y'>money</span>.</h1>"+
+    "<p class='lead'>Short, sourced notes on discipline, simple training, healthy desi food and sensible investing, plus PSX Alpha: a method for researching Pakistan Stock Exchange stocks.</p>"+
+    "<div class='ctas'><a class='btn solid' href='#latest'>Read the latest</a><a class='btn ghost' href='"+IG+"' target='_blank' rel='noopener'>Follow on Instagram</a></div>"+
+    "</div><div class='hero-art' aria-hidden='true'>"+slide('body-p','BODY','1/7',"Push-ups, <em>done right</em>")+slide('mind','MIND','1/7',"Discipline beats <em>motivation</em>")+"</div></div><div class='giant' aria-hidden='true'>GROW</div></section>";
+  h+="<div class='wrap'><div class='line'></div></div>";
+  h+="<section class='block'><div class='wrap'><div class='sechead'><h2>Three pillars, one framework</h2><a href='#about'>Why all three →</a></div><div class='pillars'>";
+  ['Mind','Body','Money'].forEach(function(n){var P=PILLARS[n];
+    h+="<a class='pillar "+COLORS[n]+"' href='#"+P.key+"'><span class='count'>"+count(n)+" articles</span><h3>"+n+"</h3><p>"+P.line+"</p><ul>"+P.topics.map(function(t){return '<li>'+t+'</li>'}).join('')+"</ul></a>"});
+  h+="</div></div></section>";
+  h+="<section class='block' id='latest' style='padding-top:0'><div class='wrap'><div class='sechead'><h2>Latest articles</h2><a href='#all'>All articles →</a></div>"+feature(latest[0])+"<div class='grid'>"+latest.slice(1).map(card).join('')+"</div></div></section>";
+  h+=psxBand(true);
+  h+="<section class='block'><div class='wrap'><div class='sechead'><h2>Follow along</h2><a href='"+IG+"' target='_blank' rel='noopener'>@TheGrowthFramework →</a></div><p style='color:var(--muted);margin:-12px 0 24px;max-width:40em'>New carousels and Reels every day on Instagram. Career and markets updates on LinkedIn.</p>"+igEmbeds()+socials()+"</div></section>";
+  h+="<section class='block band'><div class='wrap split'><div><span class='eyebrow'>Free</span><h2 style='margin-top:12px'>Free trading guides</h2></div><div><p>Get the <b>Trading Guidelines</b> and <b>Risk Management Guide</b> PDFs for free. Comment <b>GUIDE</b> on any trading post on Instagram and the guide is sent to you.</p><div class='ctas'><a class='btn solid' href='#guides'>See the guides</a></div></div></div></section>";
+  app.innerHTML=h;
+  loadIG();
+}
+
+function psxBand(withLink){
+  var h="<section class='block band money'><div class='wrap split'><div><span class='chip'><i></i>PSX Alpha</span><h2 style='margin-top:16px'>Research a PSX stock in <span class='acc'>five numbers</span>.</h2><p>PSX Alpha is a simple, repeatable way to look at Pakistan Stock Exchange companies before you read the headlines. Facts first, then opinion.</p>"+(withLink?"<div class='ctas'><a class='btn solid' href='#psx'>Explore PSX Alpha</a></div>":"")+"</div>"+
+  "<ol class='numbers'><li><div>Earnings per share (EPS) and its trend<small>Is profit per share growing over several years?</small></div></li><li><div>Price-to-earnings (P/E)<small>How much you pay for each rupee of profit.</small></div></li><li><div>Dividend yield and payout<small>Cash returned, and whether it is sustainable.</small></div></li><li><div>Debt against equity<small>How much of the business is borrowed.</small></div></li><li><div>Cash from operations<small>Do reported profits turn into real cash?</small></div></li></ol></div></section>";
+  return h;
+}
+
+function listPage(name){
+  var P=PILLARS[name], list=POSTS.filter(function(p){return p.pillar===name});
+  var h="<div class='"+COLORS[name]+"'><section class='wrap pagehead'>"+chip(name)+"<h1 style='margin-top:18px'>"+name+"</h1><p>"+P.line+"</p></section><div class='wrap'><div class='line' style='margin-top:28px'></div></div>";
+  h+="<section class='block'><div class='wrap'>"+(list.length?feature(list[0])+"<div class='grid'>"+list.slice(1).map(card).join('')+"</div>":"<p class='empty'>New articles are on the way.</p>")+"</div></section></div>";
+  app.innerHTML=h;
+}
+
+var filter='All';
+function allPage(){
+  var list=POSTS.filter(function(p){return filter==='All'||p.pillar===filter});
+  var h="<section class='wrap pagehead'><span class='eyebrow'>Library</span><h1 style='margin-top:14px'>All articles</h1><p>"+POSTS.length+" short reads across mind, body and money.</p></section><section class='block' style='padding-top:28px'><div class='wrap'><div class='filters' role='group' aria-label='Filter by pillar'>";
+  ['All','Mind','Body','Money'].forEach(function(n){h+="<button type='button' class='"+(COLORS[n]||'')+"' data-p='"+n+"' aria-pressed='"+(filter===n)+"'>"+(n==='All'?'':"<i class='dot'></i>")+n+"</button>"});
+  h+="</div><div class='grid'>"+list.map(card).join('')+"</div></div></section>";
+  app.innerHTML=h;
+  app.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){filter=b.getAttribute('data-p');allPage()})});
+}
+
+function psxPage(){
+  var list=POSTS.filter(function(p){return PSX.indexOf(p.slug)>=0});
+  var h="<div class='money'><section class='wrap pagehead'><span class='chip'><i></i>PSX Alpha</span><h1 style='margin-top:18px'>PSX Alpha</h1><p>A plain-language method for researching Pakistan Stock Exchange stocks: check the numbers, keep risk rules, and think in years, not days.</p></section><div class='wrap'><div class='line' style='margin-top:28px'></div></div></div>";
+  h+=psxBand(false).replace("class='block band money'","class='block money'");
+  h+="<section class='block band'><div class='wrap'><div class='sechead'><h2>PSX and risk articles</h2></div><div class='grid'>"+list.map(card).join('')+"</div></div></section>";
+  h+="<section class='block'><div class='wrap'><p class='meta'>PSX Alpha is educational research, not a buy or sell recommendation. Markets carry risk. Talk to a licensed adviser before investing.</p></div></section>";
+  app.innerHTML=h;
+}
+
+function guidesPage(){
+  var h="<section class='wrap pagehead'><span class='eyebrow'>Free resources</span><h1 style='margin-top:14px'>Free guides</h1><p>Practical PDFs to help you trade and invest with rules instead of moods.</p></section><div class='wrap'><div class='line' style='margin-top:28px'></div></div>";
+  h+="<section class='block'><div class='wrap'><div class='guides'>"+
+   "<div class='guide money'><div class='doc'></div><span class='status free'>Free</span><h3>Trading Guidelines</h3><p>Golden rules for PSX and crypto trading, a pre-trade checklist, a trading plan template and a journal format.</p></div>"+
+   "<div class='guide money'><div class='doc'></div><span class='status free'>Free</span><h3>Risk Management Guide</h3><p>The 1% rule, position sizing with a PSX example, stop-losses, risk/reward and why big losses are hard to recover.</p></div>"+
+   "<div class='guide mind'><div class='doc'></div><span class='status'>Coming soon</span><h3>Trading Journal &amp; Risk Planner</h3><p>A printable journal and planner to log every trade, review your week and keep your risk rules in one place.</p></div>"+
+   "</div><div class='how'><h3 style='font-size:24px'>How to get a free guide</h3><ol><li>Open any trading post on <a href='"+IG+"' target='_blank' rel='noopener'>@TheGrowthFramework</a>.</li><li>Comment <b>GUIDE</b>.</li><li>The PDF is sent to you in your messages.</li></ol></div>"+
+   "<p class='meta' style='margin-top:20px'>Educational content, not financial advice.</p></div></section>";
+  app.innerHTML=h;
+}
+
+function aboutPage(){
+  var h="<section class='wrap pagehead'><span class='eyebrow'>About</span><h1 style='margin-top:14px'>Discipline first. <span style='color:var(--mind)'>Then</span> everything else.</h1><p>The Growth Framework is run by Waseem Raja, a retired Pakistan Army officer who now writes about the habits, health and money rules that keep a life on track.</p></section><div class='wrap'><div class='line' style='margin-top:28px'></div></div>";
+  h+="<section class='block'><div class='wrap split'><div><h2>Waseem's background</h2><p>Twenty-one years of service taught one lesson that carries into everything here: rules and routines beat moods. This site turns that into simple, sourced notes for mind, body and money.</p></div><ul class='facts'>"+
+   "<li><b>Service</b><span>Pakistan Army, 1999–2021. Retired as a Major after 21 years.</span></li>"+
+   "<li><b>Experience</b><span>Mechanised Forces, Infantry and Civil Armed Forces. Led teams of 200 to 700 people.</span></li>"+
+   "<li><b>UN mission</b><span>UN peacekeeping with UNMIL (United Nations Mission in Liberia), 2006–2007.</span></li>"+
+   "<li><b>Final post</b><span>Heavy Industries Taxila (HIT), 2018–2021, running major logistics and movement operations.</span></li>"+
+   "<li><b>Markets</b><span>About four years trading crypto and following the Pakistan Stock Exchange as a long-term investor.</span></li>"+
+   "<li><b>Based in</b><span>Rawalpindi / Islamabad, Pakistan.</span></li>"+
+   "</ul></div></section>";
+  h+="<section class='block' style='padding-top:0'><div class='wrap'><div class='sechead'><h2>Connect with Waseem</h2></div>"+socials()+"</div></section>";
+  h+="<section class='block band'><div class='wrap'><div class='sechead'><h2>How we write</h2></div><div class='pillars'>"+
+   "<div class='pillar mind' style='min-height:0'><h3>Sourced</h3><p>Health facts come from trusted sources such as the NHS, Mayo Clinic, Harvard, NIH and USDA. No made-up numbers.</p></div>"+
+   "<div class='pillar body-p' style='min-height:0'><h3>Simple</h3><p>Short sentences, clear steps and one action you can take today.</p></div>"+
+   "<div class='pillar money' style='min-height:0'><h3>Honest</h3><p>No miracle cures and no get-rich promises. Educational content, never medical or financial advice.</p></div>"+
+   "</div></div></section>";
+  app.innerHTML=h;
+}
+
+function post(i){
+  var p=POSTS[i], n=POSTS[i-1], o=POSTS[i+1];
+  var h="<div class='wrap "+COLORS[p.pillar]+"'><article class='article'><a class='back' href='#"+PILLARS[p.pillar].key+"'>← "+p.pillar+"</a><div style='margin-top:22px'>"+chip(p.pillar)+"</div><h1>"+esc(p.title)+"</h1><p class='lede'>"+esc(p.lede)+"</p><div class='meta'>"+fmt(p.date)+" · "+p.read+" min read · The Growth Framework</div><div class='content'>"+p.body+"</div>";
+  h+=shareBar(SITE+'#'+p.slug,p.title+' · The Growth Framework','Share this article');
+  h+="<p class='disclaimer'>Educational content only. This is not medical or financial advice. Check facts with qualified professionals before you act.</p><nav class='nextprev' aria-label='More articles'>";
+  if(o)h+="<a href='#"+o.slug+"'><span>Older</span><strong>"+esc(o.title)+"</strong></a>";
+  if(n)h+="<a href='#"+n.slug+"'><span>Newer</span><strong>"+esc(n.title)+"</strong></a>";
+  h+="</nav></article></div>";
+  app.innerHTML=h;
+  app.querySelectorAll('.content table').forEach(function(t){var w=document.createElement('div');w.className='tablewrap';t.parentNode.insertBefore(w,t);w.appendChild(t)});
+  document.title=p.title+' · The Growth Framework';
+}
+
+var ROUTES={home:home,mind:function(){listPage('Mind')},body:function(){listPage('Body')},money:function(){listPage('Money')},psx:psxPage,guides:guidesPage,about:aboutPage,all:allPage};
+var TITLES={mind:'Mind',body:'Body',money:'Money',psx:'PSX Alpha',guides:'Free guides',about:'About',all:'All articles'};
+function route(){
+  var s=location.hash.replace('#','')||'home';
+  if(s==='latest'){home();setTimeout(function(){var e=document.getElementById('latest');if(e)e.scrollIntoView()},0);return}
+  var i=POSTS.findIndex(function(p){return p.slug===s});
+  window.scrollTo(0,0);
+  document.querySelectorAll('.nav a').forEach(function(a){a.removeAttribute('aria-current');if(a.getAttribute('href')==='#'+s)a.setAttribute('aria-current','page')});
+  document.getElementById('nav').classList.remove('open');document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+  if(i>=0){post(i);return}
+  (ROUTES[s]||home)();
+  document.title=TITLES[s]?TITLES[s]+' · The Growth Framework':'The Growth Framework · Mind, Body & Money';
+}
+window.addEventListener('hashchange',route);
+document.getElementById('menuBtn').addEventListener('click',function(){var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)});
+document.getElementById('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement, cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  var nx=cur==='dark'?'light':'dark'; r.setAttribute('data-theme',nx); try{localStorage.setItem('tgf-theme',nx)}catch(e){}
+});
+try{var t=localStorage.getItem('tgf-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('shareSite').innerHTML=shareBar(SITE,'The Growth Framework: better life through mind, body and money','Share the site');
+route();
+</script>
+</body>
+</html>
